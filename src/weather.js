@@ -42,6 +42,7 @@ class weather extends Component {
     axios
     .get(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=${address}&outFields=Match_addr,Addr_type`)
     .then(res => {
+      console.log("res", res.data)
       if(res.data.candidates[0]){
       this.setLocation(res.data.candidates[0].location.y, res.data.candidates[0].location.x);
       }
@@ -89,6 +90,9 @@ class weather extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      location
+      <p>latitude: {this.state.latitude}</p>
+      <p>longitude: {this.state.longitude}</p>
       <p>weather results</p>
 
 
